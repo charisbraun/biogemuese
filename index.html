@@ -45,10 +45,17 @@
       }
 
       var feature = features[0];
+      var props = feature.properties;
+      var html = '<h3>' + props.name + '</h3>'
+      var desc = [];
+
+      if (props.crop_vegetables === 'true') desc.push('Gemüse');
+      if (props.crop_potatoes === 'true') desc.push('Kartoffeln');
+      if (desc.length) html += '<p>' + desc.join(', ') + '</p>';
 
       var popup = new mapboxgl.Popup({ offset: [0, -15] })
         .setLngLat(feature.geometry.coordinates)
-        .setHTML('<h3>' + feature.properties.name + '</h3>')
+        .setHTML(html)
         .setLngLat(feature.geometry.coordinates)
         .addTo(map);
     });
