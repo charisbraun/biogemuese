@@ -43,6 +43,25 @@
       zoom: 7,
       center: [13.306079, 52.527615]
     });
+
+    map.on('click', function (e) {
+      var features = map.queryRenderedFeatures(e.point, {
+        layers: ['biogemuese-betriebe']
+      });
+
+      if (!features.length) {
+        return;
+      }
+
+      var feature = features[0];
+
+      var popup = new mapboxgl.Popup({ offset: [0, -15] })
+        .setLngLat(feature.geometry.coordinates)
+        .setHTML('<h3>' + feature.properties.name + '</h3><p>' + feature.properties.address + '</p>')
+        .setLngLat(feature.geometry.coordinates)
+        .addTo(map);
+    });
+
   </script>
 
 </body>
