@@ -39,14 +39,14 @@
     mapboxgl.accessToken = 'pk.eyJ1IjoiY2JyYXVuIiwiYSI6ImNqZTE2cm5qcTB1NGsyeHF0eHl6cWIybzMifQ.XkQrFSRu8mu8WDNgaKJDbw';
     var map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/cbraun/cje188cwnbh8v2st9j7rj1pog',
+      style: 'mapbox://styles/cbraun/cje2nk3ypcsvx2sscouqckr0d',
       zoom: 7,
       center: [13.306079, 52.527615]
     });
 
     map.on('click', function (e) {
       var features = map.queryRenderedFeatures(e.point, {
-        layers: ['biogemuese-betriebe']
+        layers: ['biogemuese-betriebe', 'biogemuese-betriebe-og']
       });
 
       if (!features.length) {
